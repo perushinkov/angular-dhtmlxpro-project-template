@@ -5,19 +5,20 @@
   <title></title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
-  <link rel="stylesheet" href="assets/styles/app.css">
-
   <!-- bower:css -->
   <!-- endbower -->
+  <!-- start css here -->
 
+  <link rel="stylesheet" type="text/css" href="assets/styles/app.css"/>
 
+  <link rel="stylesheet" type="text/css" href="libs/dhtmlx/codebase/dhtmlx.css"/>
+
+  <!-- end css here -->
 </head>
-<body ng-app="myApp" style="margin:0;" ng-controller="AppController">
-
+<body ng-app="app" style="margin:0;" ng-controller="AppController">
 <div class="headerTitle">
   <h1>Dhx + Angular template</h1>
 </div>
-
 <div class="content">
   <div ui-view></div>
 </div>
@@ -27,14 +28,21 @@
 <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 <script src="bower_components/dhx-directives/directives.js"></script>
 <!-- endbower -->
+<!-- start scripts here -->
 
-<script src="app.js"></script>
+<script type="text/javascript" src="app.js"></script>
 
-<!-- TODO: Find grunt plugin for group include of scripts -->
+<script type="text/javascript" src="components/model/factories.js"></script>
 
-<script src="components/model/factories.js"></script>
+<script type="text/javascript" src="root/config.js"></script>
 
-<script src="root/config.js"></script>
-<script src="root/controllers.js"></script>
+<script type="text/javascript" src="root/controllers.js"></script>
+
+<!-- end scripts here -->
+<!-- start build-specific -->
+
+<script type="text/javascript" src="libs/dhtmlx/codebase/dhtmlx.js"></script>
+
+<!-- end build-specific -->
 </body>
 </html>

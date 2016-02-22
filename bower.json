@@ -5,7 +5,7 @@
     "angular": "^1.4.0",
     "angular-ui-router": "~0.2.15",
     "jquery": "~2.2.0",
-    "dhx-directives": "https://github.com/perushinkov/dhx-directives.git#v0.0.1"
+    "dhx-directives": "https://github.com/perushinkov/dhx-directives.git#v0.0.3"
   },
   "overrides": {
     "dhtmlx": ""

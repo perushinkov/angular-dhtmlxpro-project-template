@@ -4,12 +4,15 @@
  */
 
 angular.module('app').factory('Model', [function () {
+  var _config = {
+    dhtmlxImgPath: 'libs/dhtmlx/codebase/imgs/dhxtree_skyblue/'
+  };
 
-  var doSomething = function () {
-    return "Values";
+  var getDhxImagePath = function () {
+    return _config.dhtmlxImgPath;
   };
 
   return {
-    doSomething: doSomething
+    getDhxImagePath: getDhxImagePath
   };
 }]);

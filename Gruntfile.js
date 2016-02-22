@@ -7,7 +7,7 @@ module.exports = function (grunt) {
   require('time-grunt')(grunt);
 
   require('jit-grunt')(grunt, {
-    //Static configuration here
+    tags: 'grunt-script-link-tags'
   });
 
   // Configurable paths for the application
@@ -65,13 +65,12 @@ module.exports = function (grunt) {
             cwd: '<%= yeoman.app %>',
             dest: '<%= yeoman.dist %>',
             src: [
-              '*.{ico,png,txt}',
-              '*.html',
-              'root/{,*/}*.html',
-              'root/{,*/}*.js',
+              'index.html',
               'app.js',
-              'assets/{,*/}*.*',
-              'components/**/*'
+              'root/**/*',
+              'assets/**/*',
+              'components/**/*',
+              'libs/dhtmlx/codebase/**/*'
             ]
           }
         ]
@@ -82,6 +81,52 @@ module.exports = function (grunt) {
         '<%= yeoman.app %>/libs/dhtmlx/codebase',
         '<%= yeoman.app %>/libs/dhtmlx/sources'
       ]
+    },
+    tags: {
+      defaultJS: {
+        options: {
+          openTag: '<!-- start scripts here -->',
+          closeTag: '<!-- end scripts here -->'
+        },
+        src: [
+          'app/app.js',
+          'app/components/**/*.js',
+          'app/root/**/*.js'
+        ],
+        dest: 'app/index.html'
+      },
+      defaultCSS: {
+        options: {
+          openTag: '<!-- start css here -->',
+          closeTag: '<!-- end css here -->'
+        },
+        src: [
+          'app/assets/styles/*.css',
+          'app/libs/dhtmlx/codebase/dhtmlx.css'
+        ],
+        dest: 'app/index.html'
+      },
+      dev: {
+        options: {
+          openTag: '<!-- start build-specific -->',
+          closeTag: '<!-- end build-specific -->'
+        },
+        src: [
+          'app/libs/dhtmlx/sources/**/*.js',
+          '!app/libs/dhtmlx/sources/**/*_deprecated.js'
+        ],
+        dest: 'app/index.html'
+      },
+      prod: {
+        options: {
+          openTag: '<!-- start build-specific -->',
+          closeTag: '<!-- end build-specific -->'
+        },
+        src: [
+          'app/libs/dhtmlx/codebase/dhtmlx.js'
+        ],
+        dest: 'app/index.html'
+      }
     },
     // Watches files for changes and runs tasks based on the changed files
     watch: {
@@ -121,11 +166,17 @@ module.exports = function (grunt) {
     ]);
   });
 
-  grunt.registerTask('build', [
-    'fileExists',
-    'clean:dist',
-    'wiredep',
-    'copy:dist',
-    'wiredepCopy'
-  ]);
+  grunt.registerTask('build', 'Builds either dev or prod version. Prod is default.', function (type) {
+    var tagsType = type === 'dev' ? 'dev' : 'prod';
+    grunt.task.run([
+      'fileExists',
+      'clean:dist',
+      'tags:defaultCSS',
+      'tags:defaultJS',
+      'tags:' + tagsType,
+      'wiredep',
+      'copy:dist',
+      'wiredepCopy'
+    ]);
+  });
 };

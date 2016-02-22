@@ -4,7 +4,7 @@
 angular.module('app')
   .controller('RootController', [
     '$scope', 'Model', '$state',
-    function ($scope, Model) {
-      $scope.msg = Model.doSomething();
+    function ($scope) {
+      $scope.msg = "Some controller-bound message here!";
     }
   ]);
