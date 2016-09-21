@@ -6,8 +6,7 @@
  */
 angular
   .module('app', [
-    'ui.router',
-    'dhxDirectives'
+    'ui.router'
   ])
   .config(function ($stateProvider) {
     $stateProvider
@@ -17,9 +16,10 @@ angular
         controller : 'RootController'
       });
   })
-  .controller('AppController', ['$state', 'DhxUtils', 'Model' ,function ($state, DhxUtils, Model) {
+  .controller('AppController', ['$state', 'Model' ,function ($state, Model) {
     //Factory-driven configuration that can't take place in the config section
-    DhxUtils.setImagePath(Model.getDhxImagePath());
+    var cfgVar = Model.getSomeConfigVar();
+    //DoConfigStuff with cfgVar!
     //Starting the app's initial state
     $state.go('root');
   }]);

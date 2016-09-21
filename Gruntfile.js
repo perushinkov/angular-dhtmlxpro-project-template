@@ -78,8 +78,6 @@ module.exports = function (grunt) {
     },
     fileExists: {
       scripts: [
-        '<%= yeoman.app %>/libs/dhtmlx/codebase',
-        '<%= yeoman.app %>/libs/dhtmlx/sources'
       ]
     },
     tags: {
