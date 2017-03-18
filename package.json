@@ -1,5 +1,5 @@
 {
-  "name": "ng-dhx-template",
+  "name": "some-template",
   "private": false,
   "devDependencies": {
     "grunt": "^0.4.5",

@@ -69,8 +69,7 @@ module.exports = function (grunt) {
               'app.js',
               'root/**/*',
               'assets/**/*',
-              'components/**/*',
-              'libs/dhtmlx/codebase/**/*'
+              'components/**/*'
             ]
           }
         ]
@@ -99,29 +98,7 @@ module.exports = function (grunt) {
           closeTag: '<!-- end css here -->'
         },
         src: [
-          'app/assets/styles/*.css',
-          'app/libs/dhtmlx/codebase/dhtmlx.css'
-        ],
-        dest: 'app/index.html'
-      },
-      dev: {
-        options: {
-          openTag: '<!-- start build-specific -->',
-          closeTag: '<!-- end build-specific -->'
-        },
-        src: [
-          'app/libs/dhtmlx/sources/**/*.js',
-          '!app/libs/dhtmlx/sources/**/*_deprecated.js'
-        ],
-        dest: 'app/index.html'
-      },
-      prod: {
-        options: {
-          openTag: '<!-- start build-specific -->',
-          closeTag: '<!-- end build-specific -->'
-        },
-        src: [
-          'app/libs/dhtmlx/codebase/dhtmlx.js'
+          'app/assets/styles/*.css'
         ],
         dest: 'app/index.html'
       }
